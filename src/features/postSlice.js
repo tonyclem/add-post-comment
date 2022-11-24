@@ -4,15 +4,23 @@ const initialState = [
   {
     id: '1',
     title: 'Learning Redux Toolkit',
-    content: "I've heard good things",
+    content: "I've heard good things about the Redux Toolkit",
   },
-  { id: '2', title: 'Learning skice', content: "I've heard good things" },
+  { id: '2', title: 'Learning slice', content: "I've heard good things about" },
 ];
 
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    postAdded(state, action) {
+      state.push(action.payload);
+    },
+  },
 });
+
+export const selectAllPosts = (state) => state.posts;
+
+export const { postAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
