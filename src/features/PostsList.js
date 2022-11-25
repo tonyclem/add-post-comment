@@ -10,6 +10,7 @@ const PostsList = () => {
       <h3>{post.content.substring(0, 100)}</h3>
     </article>
   ));
+
   return (
     <section>
       <h2>Posts</h2>
