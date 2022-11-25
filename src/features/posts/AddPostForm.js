@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postAdded } from './postSlice';
-import { selectAllUsers } from './users/usersSlice';
+import { postAdded } from '../posts/postSlice';
+import { selectAllUsers } from '../users/usersSlice';
 
 const AddPostForm = () => {
   // React-redux
@@ -13,6 +13,7 @@ const AddPostForm = () => {
   const [content, setContent] = useState('');
   const [userId, setUserId] = useState('');
 
+  // e target value
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
   const onAuthorChanged = (e) => setUserId(e.target.value);
@@ -27,7 +28,7 @@ const AddPostForm = () => {
 
   const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
 
-  const usersOptions = users.map((user) => (
+  const usersOptions = users?.map((user) => (
     <option key={user.id} value={user.id}>
       {user.name}
     </option>
@@ -52,7 +53,7 @@ const AddPostForm = () => {
           value={userId}
           onChange={onAuthorChanged}
         >
-          {/* <option value=''></option> */}
+          <option value=''></option>
           {usersOptions}
         </select>
         <label htmlFor='postContent'>Content:</label>
